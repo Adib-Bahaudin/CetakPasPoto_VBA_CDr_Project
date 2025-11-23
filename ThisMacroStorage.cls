@@ -1,13 +1,4 @@
-VERSION 1.0 CLASS
-BEGIN
-  MultiUse = -1  'True
-END
-Attribute VB_Name = "ThisMacroStorage"
-Attribute VB_GlobalNameSpace = False
-Attribute VB_Creatable = False
-Attribute VB_PredeclaredId = True
-Attribute VB_Exposed = True
-Sub copi()
+Private Sub copi()
 
     Dim Var1 As Shape
     Dim Var2 As Shape
@@ -47,4 +38,36 @@ Sub copi()
     ' set objek ketengah halaman
     Varall.AlignAndDistribute 3, 3, 2, 0, False, 2
 
+End Sub
+
+Sub Cetak_Pas_Foto()
+
+    If ActiveShape Is Nothing Then
+        MsgBox "Tidak ada objek yang dipilih.", vbExclamation
+        Exit Sub
+    End If
+    
+    ActiveDocument.Unit = cdrMillimeter         ' merubah satuan menjadi mm
+    
+    Dim f As form_4x6
+    
+    If ActiveShape.SizeWidth = 40 And ActiveShape.SizeHeight = 60 Then
+    
+        Set f = New form_4x6
+        f.Show
+        
+        If f.IsCancelled Then
+            Exit Sub
+        End If
+        
+        Call Empat_Enam(f.Jumlah)
+        
+    Else
+        MsgBox "Ukuran Salah.", vbExclamation
+    End If
+    
+End Sub
+
+Private Sub Empat_Enam(Jumlah As Integer)
+    MsgBox Jumlah, vbExclamation
 End Sub
