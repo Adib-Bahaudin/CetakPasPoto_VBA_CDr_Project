@@ -84,6 +84,18 @@ Sub Cetak_Pas_Foto()
         End If
         
         Call Tiga_Empat(Em.Jumlah)
+    
+    ElseIf ActiveShape.SizeWidth = 20 And ActiveShape.SizeHeight = 30 Then
+    
+        Dim Ti As form_2x3
+        Set Ti = New form_2x3
+        Ti.Show
+        
+        If Ti.IsCancelled Then
+            Exit Sub
+        End If
+        
+        ' Call Tiga_Empat(Ti.Jumlah)
         
     Else
         MsgBox "Ukuran Pas Foto Tidak Valid.", vbExclamation
@@ -240,3 +252,4 @@ Private Sub Empat_Enam(Jumlah As Integer)
         
     End If
 End Sub
+
